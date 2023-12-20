@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d21dpmn0enwm2"]
+[gd_scene load_steps=8 format=3 uid="uid://d21dpmn0enwm2"]
 
 [ext_resource type="PackedScene" uid="uid://c1juo67xt4b2h" path="res://player.tscn" id="1_42od1"]
 [ext_resource type="Texture2D" uid="uid://cyq0yg08uqbjw" path="res://icon.svg" id="1_tval4"]
@@ -75,6 +75,8 @@ texture = ExtResource("1_tval4")
 [sub_resource type="TileSet" id="TileSet_lcr0t"]
 sources/0 = SubResource("TileSetAtlasSource_d7a0k")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8cni"]
+
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_42od1")]
@@ -88,7 +90,7 @@ layer_0/tile_data = PackedInt32Array(65535, 196608, 2, 0, 196608, 2, 1, 196608, 
 [node name="Bullet" parent="." instance=ExtResource("3_cu2yr")]
 position = Vector2(486, 185)
 
-[node name="Bad guy" type="CharacterBody2D" parent="."]
+[node name="Bad guy" type="CharacterBody2D" parent="." groups=["mobs"]]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("4_gfetk")
 
@@ -107,3 +109,13 @@ grow_vertical = 2
 color = Color(0.631373, 0.117647, 0.176471, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bad guy"]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_j8cni")
+
+[node name="BadGuyArea2D" type="Area2D" parent="Bad guy"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bad guy/BadGuyArea2D"]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_j8cni")
+
+[connection signal="body_entered" from="Bad guy/BadGuyArea2D" to="Bullet" method="_on_bad_guy_area_2d_body_entered"]
