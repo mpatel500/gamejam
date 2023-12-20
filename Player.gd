@@ -19,5 +19,6 @@ func _physics_process(delta):
 	
 func shoot():
 	var bullet = Bullet.instantiate()
+	bullet.position = position
 	owner.add_child(bullet)
-	bullet.transform = $Marker2D.transform
+	bullet.transform = $Marker2D.global_transform
