@@ -1,5 +1,5 @@
 extends CharacterBody2D
-@export var Bullet : PackedScene
+var Bullet =  preload("res://Bullet.tscn")
 
 const SPEED = 300.0
 
@@ -20,4 +20,4 @@ func _physics_process(delta):
 func shoot():
 	var bullet = Bullet.instantiate()
 	owner.add_child(bullet)
-	bullet.transform = $Marker2D.global_transform
+	bullet.transform = $Marker2D.transform
