@@ -1,10 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://d21dpmn0enwm2"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_b8ej1"]
+[ext_resource type="PackedScene" uid="uid://c1juo67xt4b2h" path="res://player.tscn" id="1_42od1"]
 [ext_resource type="Texture2D" uid="uid://cyq0yg08uqbjw" path="res://icon.svg" id="1_tval4"]
-[ext_resource type="PackedScene" uid="uid://c0abhtga00bds" path="res://Bullet.tscn" id="3_cu2yr"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hhm03"]
+[ext_resource type="PackedScene" uid="uid://dyrs08csvf3se" path="res://bullet.tscn" id="3_cu2yr"]
+[ext_resource type="Script" path="res://Bad guy.gd" id="4_gfetk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d7a0k"]
 texture = ExtResource("1_tval4")
@@ -78,31 +77,7 @@ sources/0 = SubResource("TileSetAtlasSource_d7a0k")
 
 [node name="World" type="Node2D"]
 
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(300, 100)
-script = ExtResource("1_b8ej1")
-metadata/_edit_group_ = true
-
-[node name="Marker2D" type="Marker2D" parent="Player"]
-position = Vector2(20, -20)
-
-[node name="ColorRect" type="ColorRect" parent="Player"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-scale = Vector2(2, 2)
-shape = SubResource("RectangleShape2D_hhm03")
+[node name="Player" parent="." instance=ExtResource("1_42od1")]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_lcr0t")
@@ -112,3 +87,16 @@ layer_0/tile_data = PackedInt32Array(65535, 196608, 2, 0, 196608, 2, 1, 196608, 
 
 [node name="Bullet" parent="." instance=ExtResource("3_cu2yr")]
 position = Vector2(486, 185)
+
+[node name="Bad guy" type="CharacterBody2D" parent="."]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("4_gfetk")
+
+[node name="ColorRect" type="ColorRect" parent="Bad guy"]
+offset_left = 306.0
+offset_top = 64.0
+offset_right = 346.0
+offset_bottom = 104.0
+color = Color(0.631373, 0.117647, 0.176471, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bad guy"]
