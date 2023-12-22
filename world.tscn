@@ -81,6 +81,7 @@ sources/0 = SubResource("TileSetAtlasSource_d7a0k")
 [node name="Player" parent="." instance=ExtResource("1_42od1")]
 
 [node name="TileMap" type="TileMap" parent="."]
+visible = false
 tile_set = SubResource("TileSet_lcr0t")
 format = 2
 layer_0/z_index = -1
@@ -114,3 +115,5 @@ shape = SubResource("RectangleShape2D_j8cni")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bad guy/BadGuyArea2D"]
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_j8cni")
+
+[connection signal="area_entered" from="Bad guy/BadGuyArea2D" to="Bad guy" method="_on_bad_guy_area_2d_area_entered"]
