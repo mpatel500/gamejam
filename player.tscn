@@ -4,13 +4,12 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hhm03"]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(300, 100)
 script = ExtResource("1_1jywu")
-metadata/_edit_group_ = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(20, -20)
+position = Vector2(29, -1)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 8

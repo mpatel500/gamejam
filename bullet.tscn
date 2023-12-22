@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0abhtga00bds"]
+[gd_scene load_steps=5 format=3 uid="uid://c0abhtga00bds"]
 
 [ext_resource type="Script" path="res://Bullet.gd" id="1_8wavi"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jfilh"]
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_jd3wm"]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ky16"]
-radius = 3.0
+radius = 4.0
 height = 20.0
 
 [node name="Bullet" type="Area2D"]
@@ -16,7 +18,12 @@ metadata/_edit_group_ = true
 rotation = 1.5708
 scale = Vector2(5, 10)
 mesh = SubResource("CapsuleMesh_jfilh")
+texture = SubResource("CanvasTexture_jd3wm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_7ky16")
+one_way_collision_margin = 0.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
