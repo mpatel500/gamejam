@@ -13,3 +13,9 @@ func _on_bad_guy_area_2d_area_entered(area):
 	if area.is_in_group("bullet"):
 		scale = Vector2(0.25, 0.25)
 		area.queue_free()
+		STOMPABLE = true
+		
+
+func _on_bad_guy_area_2d_body_entered(body):
+	if body.is_in_group("player") and STOMPABLE == true:
+		queue_free()
