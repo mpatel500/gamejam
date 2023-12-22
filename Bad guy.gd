@@ -17,5 +17,9 @@ func _on_bad_guy_area_2d_area_entered(area):
 		
 
 func _on_bad_guy_area_2d_body_entered(body):
-	if body.is_in_group("player") and STOMPABLE == true:
-		queue_free()
+	if body.is_in_group("player"):
+		if STOMPABLE:
+			queue_free()
+		else:
+			body.visible = false
+			get_tree().change_scene_to_file("res://you_fail.tscn")
