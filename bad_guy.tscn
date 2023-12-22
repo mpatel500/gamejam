@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://k6b26ec31sjh"]
+
+[ext_resource type="Script" path="res://Bad guy.gd" id="1_fl7ef"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8cni"]
+
+[node name="Bad guy" type="CharacterBody2D" groups=["mobs"]]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_fl7ef")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.631373, 0.117647, 0.176471, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_j8cni")
+
+[node name="BadGuyArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BadGuyArea2D"]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_j8cni")
