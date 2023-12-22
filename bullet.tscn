@@ -10,7 +10,7 @@
 radius = 4.0
 height = 20.0
 
-[node name="Bullet" type="Area2D"]
+[node name="Bullet" type="Area2D" groups=["bullet"]]
 script = ExtResource("1_8wavi")
 metadata/_edit_group_ = true
 
@@ -24,6 +24,3 @@ texture = SubResource("CanvasTexture_jd3wm")
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_7ky16")
 one_way_collision_margin = 0.0
-
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
